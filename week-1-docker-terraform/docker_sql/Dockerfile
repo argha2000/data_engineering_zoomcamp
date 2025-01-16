@@ -1,6 +1,6 @@
 FROM python:3.12
 
-RUN pip install pandas
+RUN pip install pandas, numpy ,pyarrow,polars,jupyter
 
 WORKDIR /app
 COPY pipeline.py pipeline.py
