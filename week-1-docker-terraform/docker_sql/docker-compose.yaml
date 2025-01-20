@@ -1,14 +1,12 @@
-#Mounting format is done based on wsl2
-
 services:
-  pgdatabase:
+  pg-database:
     image: postgres:13
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=ny_taxi
     volumes:
-      - c:/data_engineering_zoomcamp/week-1-docker-terraform/docker_sql/ny_taxi_postgres_data:/var/lib/postgresql/data:rw
+      - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
     ports:
       - "5432:5432"
   pgadmin:
@@ -16,5 +14,7 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@admin.com
       - PGADMIN_DEFAULT_PASSWORD=root
+    volumes:
+      - "./pgadmin_conn_data:/var/lib/pgadmin:rw"
     ports:
       - "8080:80"
